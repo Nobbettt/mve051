@@ -15,4 +15,9 @@
   $$
 2. Worst case
     a. What is the probability that the first number reaches level $i$ but not higher?
-    Given that the probability to reach $i$ and higher is (as determined in 1a) $P(i)=0.5^i$, the probability to reach *exactly* level $i$ is $P(i)-P(i+1) = 0.5^i-0.5^{i+1}$ 
+    Given that the probability to reach $i$ and higher is (as determined in 1a) $P(i)=0.5^i$, the probability to reach *exactly* level $i$ is $P(i)-P(i+1) = 0.5^i-0.5^{i+1}$
+    b. What is the probability that all the $n$ nodes reach level $i$ but not level $i+1$, for $i=0,1,...,?$
+    $A_1$="a node reaches level $i$", $A_2$="all nodes reach level $i$", $B$="all nodes reach exactly level $i$"
+    $P(A_1)=0.5^i$
+    $P(A_2)=(P(A_1))^n$
+    $P(B)=P(A_1)-P(A_2)$
