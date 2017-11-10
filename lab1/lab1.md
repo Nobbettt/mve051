@@ -1,17 +1,17 @@
 # Skiplists
 
 1. Number of nodes per level
-  **a.** What is the probability that the first node reaches level *i*  or higher.
+  **a.** What is the probability that the first node reaches level *i*  or higher?
   $P(X >= i)$ can be expressed as a binomial distribution with $i$ trials. In our case, where $P(Success) = 0.5$, we get the distribution $B$~$X(i,0.5)$
   $$
   P(X >= i) = P(X=i) = {{i}\choose{i}} \cdot 0.5^i \cdot 0.5^{i-i} = 1\cdot0.5^i\cdot1 = 0.5^i
   $$
   **b.** If one knows that $k$ nodes have reached level $i$, in how many ways can one choose these nodes?
   Given that we have $n$ nodes, there are ${{n}\choose{k}}$ ways that there can be $k$ nodes that has reached level $i$.
-  **c.** **NEEDS TO BE REVISED** What is the probabilty that there are exactly _k_ nodes at level _i_, where $k = 0,1,...,n$ and $i = 0,1...$, if one does not count the ending nodes with $-\infty{}$ and $\infty$?
-  The problem can be expressed as a binomial distribution $X$~$B(i,p)$ where $p$ is the probability that a node reaches level $i$ or higher. As determined in _a)_, $p = 0.5^i$. I.e, the probabilty is
+  **c.** What is the probability that there are exactly _k_ nodes at level _i_, where $k = 0,1,...,n$ and $i = 0,1...$, if one does not count the ending nodes with $-\infty{}$ and $\infty$?
+  The problem can be expressed as a binomial distribution with $n$ (the number of nodes) trials and $P(Success) = 0.5^i$ for a trial or node to reach level $i$, as determined in 1a, i.e. $X$~$B(n,0.5^i)$
   $$
-  P(\text{k nodes at level i}) = P(X = i) = {{i}\choose{i}} \cdot (0.5^i)^i \cdot (1-0.5^i)^{i-i} = 1 \cdot 0.5^{i^2} \cdot 1 = 0.5^{i^2}
+  P(X=k) = {{n}\choose{k}} \cdot 0.5^{i^k} \cdot (1-0.5^i)^{n-k}
   $$
 2. Worst case
     **a.** What is the probability that the first number reaches level $i$ but not higher?
@@ -30,4 +30,8 @@
     \sum_{k=0}^\infty P(B(k))
     $$
 3. Memory space
-    **a.** Let X denote the number of notes at level $i$
+    **a.** Let $X$ denote the number of nodes at level $i$. In point 1 you have computed the probability that $X = k$. What is the distribution of the random variable $X$ and why? What are the parameters of the distribution?
+    The distribution of $X$ is $f(x,n,i)$ where $x$ is the number of nodes out of $n$ nodes that reached level $i$ or higher. The parameters $n$ and $i$ are necessary as the distribution is based on a binomial distribution as seen in 1c. **PARANOIA NOTE**
+    **b.**
+    What is the expected value if nodes at level $i$ for $i=0,1,2,...$,without counting the ending nodes?
+    The expected value $\mathbb{E}$ for a binomial distribution $X$~$B(n,p)$ is $\mathbb{E} = np$.
